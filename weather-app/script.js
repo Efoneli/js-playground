@@ -1,11 +1,3 @@
-
-
-
-let userCity = ''
-
-
-
-
 /**
  * Weather App
  * TODO: Complete getWeatherData() to return json response Promise
@@ -21,42 +13,42 @@ let userCity = ''
 "max-temp"
 */
 
-
 /**
  * Retrieve weather data from openweathermap
  * HINT: Use fetch()
- * HINT: URL should look like this: 
+ * HINT: URL should look like this:
  * https://api.openweathermap.org/data/2.5/weather?q=detroit&appid=a8e71c9932b20c4ceb0aed183e6a83bb&units=imperial
  */
 const getWeatherData = (city) => {
-
   //HINT: Use template literals to create a url with input and an API key
 
   const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '30d6f31d29msh80d0e602bfcb291p10394ajsnd9fc5b2e08a2',
-		'X-RapidAPI-Host': 'open-weather-map27.p.rapidapi.com'
-	}
-};
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "30d6f31d29msh80d0e602bfcb291p10394ajsnd9fc5b2e08a2",
+      "X-RapidAPI-Host": "open-weather-map27.p.rapidapi.com",
+    },
+  };
 
-fetch(`https://open-weather-map27.p.rapidapi.com/weather?q=${city}&units=imperial`, options)
-	.then(response => response.json())
-	.then(data => console.log(data))
-	.catch(err => console.error(err));
- 
-}
+  return fetch(
+    `https://open-weather-map27.p.rapidapi.com/weather?q=${city}&units=imperial`,
+    options
+  )
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((err) => console.error(err));
+};
 
 /**
  * Retrieve city input and get the weather data
  * HINT: Use the promise returned from getWeatherData()
  */
-const searchCity = () => {
-  const city = document.getElementById('city-input').value;
-  console.log(city)
-  // CODE GOES HERE
-
-}
+const searchCity = async () => {
+  const city = document.getElementById("city-input").value;
+  console.log(city);
+  const data = await getWeatherData(city);
+  showWeatherData(data);
+};
 
 /**
  * Show the weather data in HTML
@@ -64,7 +56,11 @@ const searchCity = () => {
  */
 const showWeatherData = (weatherData) => {
   //CODE GOES HERE
-  const response = JSON.stringify(weatherData)
-  
-}
-
+  console.log(weatherData, "rice");
+  document.getElementById("temp").innerText = weatherData.main.temp;
+  document.getElementById("city-name").innerText = weatherData.name;
+  document.getElementById("weather-type").innerText =
+    weatherData.weather[0].main;
+  document.getElementById("min-temp").innerText = weatherData.main.temp_min;
+  document.getElementById("max-temp").innerText = weatherData.main.temp_max;
+};
