@@ -1,17 +1,8 @@
 
- const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '30d6f31d29msh80d0e602bfcb291p10394ajsnd9fc5b2e08a2',
-		'X-RapidAPI-Host': 'open-weather-map27.p.rapidapi.com'
-	}
-};
 
-fetch('https://open-weather-map27.p.rapidapi.com/weather', options)
-	.then(response => response.json())
-	.then(data => console.log(data.name))
-	.catch(err => console.error(err));
- 
+
+let userCity = ''
+
 
 
 
@@ -38,10 +29,22 @@ fetch('https://open-weather-map27.p.rapidapi.com/weather', options)
  * https://api.openweathermap.org/data/2.5/weather?q=detroit&appid=a8e71c9932b20c4ceb0aed183e6a83bb&units=imperial
  */
 const getWeatherData = (city) => {
-  const URL = "https://api.openweathermap.org/data/2.5/weather";
+
   //HINT: Use template literals to create a url with input and an API key
 
-  //CODE GOES HERE
+  const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '30d6f31d29msh80d0e602bfcb291p10394ajsnd9fc5b2e08a2',
+		'X-RapidAPI-Host': 'open-weather-map27.p.rapidapi.com'
+	}
+};
+
+fetch(`https://open-weather-map27.p.rapidapi.com/weather?q=${city}&units=imperial`, options)
+	.then(response => response.json())
+	.then(data => console.log(data))
+	.catch(err => console.error(err));
+ 
 }
 
 /**
@@ -50,6 +53,7 @@ const getWeatherData = (city) => {
  */
 const searchCity = () => {
   const city = document.getElementById('city-input').value;
+  console.log(city)
   // CODE GOES HERE
 
 }
