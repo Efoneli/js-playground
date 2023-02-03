@@ -7,10 +7,15 @@ class Car {
         this.currentSpeed = 0
     }
 
-    zeroToSixty () {
+    getCurrentSpeed() {
+        return currentSpeed
+    }
+
+    zeroToSixty () { 
         setTimeout(() => {
             console.log('phew!!, that was fast')
-            this.currentSpeed = 50
+            this.currentSpeed = 50;
+            // console.log(this.currentSpeed)
         })
     }
 
@@ -21,18 +26,41 @@ class Car {
     }
 
     brake() {
+        this.currentSpeed -= 10
+        console.log('braking')
         // console.log('brakes in')
+    }
+
+    stop() {
+        console.log('STOP')
+        this.currentSpeed == 0
+
     }
 }
 
 const ferrari = new Car('ferrari','red', '250')
 // console.log(ferrari)
 
-console.log(ferrari.currentSpeed)
+// console.log(ferrari.currentSpeed)
 
 ferrari.drive()
-ferrari.brake()
-
+ferrari.drive()
+ferrari.drive()
+ferrari.drive()
+ferrari.drive()
 console.log(ferrari.currentSpeed)
+ferrari.brake()
+ferrari.stop()
+console.log(ferrari.currentSpeed)
+// ferrari.brake()
 
-ferrari.zeroToSixty()
+// console.log(ferrari.currentSpeed)
+
+// ferrari.zeroToSixty()
+
+const porsche = new Car('porsche','yellow', '250')
+
+console.log(porsche.name)
+const nums = [1, 2, 3, 4, 5]
+nums.forEach(_ => porsche.drive())
+porsche.zeroToSixty()
