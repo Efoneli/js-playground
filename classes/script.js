@@ -7,6 +7,7 @@ class Car {
         this.currentSpeed = 0
     }
 
+    //getters & setters
     getCurrentSpeed() {
         return currentSpeed
     }
