@@ -70,3 +70,17 @@ porsche.zeroToSixty()
 const numbers = [1,2,3]
 numbers.push(4) // method
 console.log(numbers)
+
+Array.prototype.myPush = function(item) {
+    this[this.length] = item
+    return this
+}
+
+const fruits = ['banana', 'strawberry', 'cookie', 'pear', 'apple']
+fruits.myPush('kiwi')
+fruits.myPush('orange')
+fruits.myPush('udara')
+fruits.myPush('mango')
+
+console.log(fruits)
+
