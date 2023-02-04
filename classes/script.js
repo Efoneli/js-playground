@@ -7,7 +7,7 @@ class Car {
         this.currentSpeed = 0
     }
 
-    //getters & setters
+    // getters & setters
     getCurrentSpeed() {
         return currentSpeed
     }
@@ -20,7 +20,7 @@ class Car {
         })
     }
 
-    drive() {
+    drive(speed) {
         // console.log('two miles')
         this.currentSpeed += 10
         console.log(`driving speed at ${this.currentSpeed}`)
@@ -65,3 +65,8 @@ console.log(porsche.name)
 const nums = [1, 2, 3, 4, 5]
 nums.forEach(_ => porsche.drive())
 porsche.zeroToSixty()
+
+// you can only have methods inside classes
+const numbers = [1,2,3]
+numbers.push(4) // method
+console.log(numbers)
