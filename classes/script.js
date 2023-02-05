@@ -32,8 +32,10 @@ const depositButton = document.getElementById('deposit')
 const withdrawButton = document.getElementById('withdraw')
 const amountInput = document.getElementById('amount')
 
-depositButton.onclick = sarahChecking.withdraw()
- 
+depositButton.onclick = () => {
+    sarahChecking.deposit(amountInput.value)
+    console.log(amountInput.value)
+}
 
 // class Car {
 //     constructor(name, color, topSpeed, currentSpeed) {
