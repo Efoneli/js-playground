@@ -45,9 +45,18 @@ let p2HealthDiv = document.getElementById('p2Health')
 const updateGame = (p1,p2,gameState) => {
   // Update the DOM with the names and the latest health of players
 
+  p1NameDiv.innerText = p1.name
+  p2NameDiv.innerText = p1.name
+  p1HealthDiv.innerText = p1.health
+  p2NameDiv.innerText = p2.health
   // Condition IF either player health is <= 0 then set isOver to true and declareWinner
-
+  if(p1.health <= 0 || p2.health === 0) {
+    game.isOver = true
+    gameState = game.isOver
+    resultDiv.innerText = game.declareWinner(game.isOver, p1,p2)
+  }
 }
+
 
 // ** Create the Player class which can create a player with all it's attributes and methods **
 // qazi = new Player('Qazi', 100, 7)
@@ -82,7 +91,7 @@ class Player {
     //  Update the game and DOM with updateGame()
 
     //  Return a message of 'player name heals for hpAmount HP'
-
+    
   }
 }
 
@@ -129,13 +138,15 @@ class Game {
 }
 
 // ** Create 2 players using the player class **
-
+let player1 = new Player('Efoneli', 100, 10)
+let player2 = new Player('Mimi', 100, 10)
 
 // ** Save original Player Data into a variable in order to reset **
-let p1;
-let p2;
+let p1 = player1
+let p2 = player2
 
 // ** Create the game object from the Game class **
+let game = new Game()
 
 // ** Intialize the game by calling updateGame() **
 
