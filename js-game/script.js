@@ -1,4 +1,4 @@
-// document.addEventListener('keydown', function(e) {
+// document.addEventListener('keydown', function(e;) {
 //   if (e.key == 'q') {
 //     console.log('fight')
 //     document.getElementById('p2attack').play()
@@ -104,13 +104,13 @@ class Player {
   heal (player) {
     
     // Get random number between 1 - 5 and store that in hpAmount
-
+    let hpAmount = Math.cell(Math.random() * 5)
     // Add hpAmount to players health
-
+    player.health += hpAmount
     //  Update the game and DOM with updateGame()
-
+    updateGame(player, p2, game.isOver)
     //  Return a message of 'player name heals for hpAmount HP'
-    
+    return `${player.name} heals for ${hpAmount} HP!`
   }
 }
 
@@ -123,17 +123,22 @@ class Game {
   }
 
   // ** If the game is over and a player has 0 health declare the winner! **
-  declareWinner(isOver,p1, p2) {
+  declareWinner(isOver, p1, p2) {
     
     // Create a message variable that will hold a message based on the condition
-
+    let message;
     // If isOver is true AND p1 health is <= 0 then update message variable  to 'p1 WINS!'
-
+    if (isOver == true && p1.health <= 0) {
+      message = `${p2.name} WINS!`
+    }
     // Else if isOver is true AND p2 health is <= 0 then update message variable  to 'p2 WINS!'
+    else if (isOver == false && p2.health <= 0) {
+      message = `${p1.name} WINS!`
+    }
     // Play victory sound
-
+    document.getElementById('victory').play()
     // Return message variable 
-
+    return message;
   }
 
   // ** Reset the players health back to it's original state and isOver to FALSE **
@@ -210,7 +215,3 @@ document.addEventListener('keydown', function(e) {
     // After healing then play heal sound
 
 });
-
-p1.strike(p1, p2, 10)
-
-
